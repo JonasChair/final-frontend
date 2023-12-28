@@ -24,7 +24,7 @@
 
 .link:hover {
     border-radius: 15px;
-    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3);
 }
 
 .navbar {
@@ -32,4 +32,17 @@
     display: flex;
     gap: 1rem;
     align-items: center;
+}
+
+.logOutButton {
+    all: unset;
+    text-decoration: none;
+    color: black;
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+.logOutButton:hover {
+    border-radius: 15px;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
 }
