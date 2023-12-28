@@ -38,23 +38,28 @@ const QuestionWithAnswers = () => {
     }, [router.query.id]);
 
     const onSubmit = async () => {
-        const headers = {
-            authorization: cookie.get("jwt_token"),
-        }
-
-        const body = {
-            answer_text: answer
-        }
-
-        const response = await axios.post(
-            `${process.env.SERVER_URL}/questions/${question?._id}/answers`, body,
-            {
-                headers,
+        try {
+            const headers = {
+                authorization: cookie.get("jwt_token"),
             }
-        )
 
-        if (response.status === 200) {
-            router.reload();
+            const body = {
+                answer_text: answer
+            }
+
+            const response = await axios.post(
+                `${process.env.SERVER_URL}/questions/${question?._id}/answers`, body,
+                {
+                    headers,
+                }
+            )
+
+            if (response.status === 200) {
+                router.reload();
+            }
+        }
+        catch (err) {
+            console.log(err);
         }
     }
 
@@ -74,7 +79,7 @@ const QuestionWithAnswers = () => {
                 router.push("/");
             }
         }
-        catch(err) {
+        catch (err) {
             console.log(err);
         }
     }
