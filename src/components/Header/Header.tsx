@@ -35,11 +35,6 @@ const Header = () => {
                     (
                     <>
                         <li>
-                            <Link className={styles.link} href="/questions">
-                                My Questions
-                            </Link>
-                        </li>
-                        <li>
                             <Link className={styles.link} href="/add-question">
                                 Ask Question
                             </Link>

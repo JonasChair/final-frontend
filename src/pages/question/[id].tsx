@@ -3,7 +3,9 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import cookie from "js-cookie";
 
+
 import styles from "./styles.module.css";
+import Button from "@/components/Button/Button";
 import PageTemplate from "@/components/PageTemplate/PageTemplate";
 
 const dateFormat = new Intl.DateTimeFormat('lt-LT', { dateStyle: 'short', timeStyle: 'medium' });
@@ -56,6 +58,27 @@ const QuestionWithAnswers = () => {
         }
     }
 
+    const onDeleteQuestion = async () => {
+        try {
+            const headers = {
+                authorization: cookie.get("jwt_token"),
+            }
+
+            const response = await axios.delete(
+                `${process.env.SERVER_URL}/questions/${question?._id}`, {
+                headers,
+            }
+            )
+
+            if (response.status === 200) {
+                router.push("/");
+            }
+        }
+        catch(err) {
+            console.log(err);
+        }
+    }
+
     return (
         <PageTemplate>
             {question && (
@@ -63,6 +86,11 @@ const QuestionWithAnswers = () => {
                     <div className={styles.question}>
                         <div className={styles.text}>{question.question_text}</div>
                         <div className={styles.date}>Posted on: {dateFormat.format(new Date(question.date))}</div>
+                        <Button
+                            className={styles.deleteButton}
+                            text="X"
+                            onClick={onDeleteQuestion}
+                        />
                     </div>
                     <div className={styles.answers}>
                         {question.question_answers &&
@@ -76,7 +104,7 @@ const QuestionWithAnswers = () => {
                 </div>
             )}
             <div className={styles.form}>
-                <input 
+                <input
                     placeholder="insert your answer"
                     value={answer}
                     onChange={(e) => setAnswer(e.target.value)}

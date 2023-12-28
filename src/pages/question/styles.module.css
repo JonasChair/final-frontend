@@ -2,6 +2,7 @@
     display: flex;
     padding: 1.5rem;
     justify-content: space-between;
+    align-items: center;
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);
     transition: 0.3s;
 }
@@ -17,6 +18,7 @@
     padding: 1.5rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);
     transition: 0.3s;
 }
@@ -36,4 +38,19 @@
     box-sizing: content-box;
     padding: 0.5rem;
     font-size: 1.5rem;
+}
+
+.deleteButton {
+    font-size: 1rem;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: solid 2px red;
+    color: red;
+    background-color: white;
+    transition: 0.3s;
+}
+
+.deleteButton:hover {
+    cursor: pointer;
+    scale: 1.5;
 }
