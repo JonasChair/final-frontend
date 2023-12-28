@@ -17,9 +17,7 @@ export default function Home() {
       setQuestions(response.data.questions)
     }
     catch (err) {
-      if (err.response.status === 401){
-        router.push("/login");
-      }
+      console.log(err);
     }
   }
 
@@ -28,10 +26,8 @@ export default function Home() {
   }, []);
 
   return (
-    <>
-      <PageTemplate>
-        <Questions questions={questions} />
-      </PageTemplate>
-    </>
+    <PageTemplate>
+      <Questions questions={questions} />
+    </PageTemplate>
   )
 }
